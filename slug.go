@@ -28,7 +28,7 @@ var (
 	// after MaxLength.
 	MaxLength int
 
-	regexpNonAuthorizedChars = regexp.MustCompile("[^a-z0-9-_]")
+	RegexpNonAuthorizedChars = regexp.MustCompile("[^a-z0-9-_]")
 	regexpMultipleDashes     = regexp.MustCompile("-+")
 )
 
@@ -70,7 +70,7 @@ func MakeLang(s string, lang string) (slug string) {
 	slug = strings.ToLower(slug)
 
 	// Process all remaining symbols
-	slug = regexpNonAuthorizedChars.ReplaceAllString(slug, "-")
+	slug = RegexpNonAuthorizedChars.ReplaceAllString(slug, "-")
 	slug = regexpMultipleDashes.ReplaceAllString(slug, "-")
 	slug = strings.Trim(slug, "-")
 
